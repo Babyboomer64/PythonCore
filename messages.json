@@ -1,0 +1,120 @@
+{
+  "GLOBAL": {
+    "DATA_NOT_FOUND": {
+      "EN": "No data found.",
+      "DE": "Keine Daten gefunden."
+    },
+    "ERR_FILE_NOT_FOUND": {
+      "EN": "File not found: {path}",
+      "DE": "Datei nicht gefunden: {path}"
+    },
+    "ERR_NO_PERMISSION": {
+      "EN": "No permission to write file: {path} ({message})",
+      "DE": "Keine Berechtigung zum Schreiben der Datei: {path} ({message})"
+    },
+    "UNEXPECTED_ERROR": {
+      "EN": "Unexpected error: {message}",
+      "DE": "Unerwarteter Fehler: {message}"
+    }
+  },
+
+  "GLOBAL.DATABASE": {
+    "DB_ERROR": {
+      "EN": "Database error: {message}",
+      "DE": "Datenbankfehler: {message}"
+    },
+    "DATA_NOT_FOUND": {
+      "EN": "No data found in database.",
+      "DE": "Keine Daten in der Datenbank gefunden."
+    }
+  },
+
+  "GLOBAL.DATABASE.SQLITE": {
+    "SQLITE_DB_MISSING": {
+      "EN": "SQLite DB not found at {path}. Please run: python init_sqlite_db.py",
+      "DE": "SQLite-DB nicht gefunden unter {path}. Bitte ausführen: python init_sqlite_db.py"
+    }
+  },
+
+  "GLOBAL.CSV": {
+    "CSV_WRITTEN": {
+      "EN": "CSV successfully written: {path}",
+      "DE": "CSV erfolgreich geschrieben: {path}"
+    },
+
+    "CATALOG_QUERIES_HEADER": {
+      "EN": "Available query labels:",
+      "DE": "Verfügbare Query-Labels:"
+    },
+    "CATALOG_CSV_CONFIGS_HEADER": {
+      "EN": "Available CSV config labels:",
+      "DE": "Verfügbare CSV-Config-Labels:"
+    },
+    "CATALOG_EMPTY_LIST": {
+      "EN": "(none found)",
+      "DE": "(keine gefunden)"
+    },
+    "USAGE_TEST_CSV_REPORTER": {
+      "EN": "Usage: python test_csv_reporter.py <query_label> <csv_config_label> <out_path> [key=value ...]",
+      "DE": "Verwendung: python test_csv_reporter.py <query_label> <csv_config_label> <out_path> [key=value ...]"
+    },
+    "EXAMPLES_TEST_CSV_REPORTER": {
+      "EN": "Examples:\n  python test_csv_reporter.py ALL_CUSTOMERS NDL_STRICT out.csv\n  python test_csv_reporter.py CUSTOMERS_BY_CITY NDL_STRICT out_cologne.csv city=Cologne",
+      "DE": "Beispiele:\n  python test_csv_reporter.py ALL_CUSTOMERS NDL_STRICT out.csv\n  python test_csv_reporter.py CUSTOMERS_BY_CITY NDL_STRICT out_cologne.csv city=Cologne"
+    },
+
+    "ERR_OUTPUT_DIR_CREATE": {
+      "EN": "Failed to create output directory: {path} ({message})",
+      "DE": "Ausgabeverzeichnis konnte nicht erstellt werden: {path} ({message})"
+    },
+    "ERR_WRITE_CSV_FAILED": {
+      "EN": "Failed to write CSV '{path}': {message}",
+      "DE": "CSV konnte nicht geschrieben werden '{path}': {message}"
+    },
+
+    "ERR_SQL_EMPTY": {
+      "EN": "SQL must be a non-empty string.",
+      "DE": "SQL muss ein nicht-leerer String sein."
+    },
+    "ERR_CSV_CONFIG_TYPE": {
+      "EN": "CSV config must be a dict.",
+      "DE": "CSV-Konfiguration muss ein Dict sein."
+    },
+    "ERR_UNKNOWN_QUERY_LABEL": {
+      "EN": "Unknown query label: {q_label}",
+      "DE": "Unbekanntes Query-Label: {q_label}"
+    },
+    "ERR_UNKNOWN_CSV_CONFIG_LABEL": {
+      "EN": "Unknown CSV config label: {c_label}",
+      "DE": "Unbekanntes CSV-Config-Label: {c_label}"
+    },
+    "ERR_JSON_MUST_BE_OBJECT": {
+      "EN": "JSON file must contain a top-level object (dict).",
+      "DE": "JSON-Datei muss ein Objekt (Dict) auf oberster Ebene enthalten."
+    },
+    "ERR_INVALID_QUERY_ENTRY": {
+      "EN": "Invalid query entry: key={key_type}, value={value_type} (expected str->str).",
+      "DE": "Ungültiger Query-Eintrag: Schlüssel={key_type}, Wert={value_type} (erwartet str->str)."
+    },
+    "ERR_INVALID_CSV_ENTRY": {
+      "EN": "Invalid CSV config entry: key={key_type}, value={value_type} (expected str->dict).",
+      "DE": "Ungültiger CSV-Config-Eintrag: Schlüssel={key_type}, Wert={value_type} (erwartet str->dict)."
+    },
+    "ERR_DELIMITER_INVALID": {
+      "EN": "CSV 'delimiter' must be a single character.",
+      "DE": "CSV-‚delimiter‘ muss genau ein Zeichen sein."
+    },
+    "ERR_QUOTECHAR_INVALID": {
+      "EN": "CSV 'quotechar' must be a single character.",
+      "DE": "CSV-‚quotechar‘ muss genau ein Zeichen sein."
+    },
+    "ERR_QUOTING_INVALID": {
+      "EN": "CSV 'quoting' must be one of {QUOTE_MINIMAL, QUOTE_ALL, QUOTE_NONNUMERIC, QUOTE_NONE}.",
+      "DE": "CSV-‚quoting‘ muss einer der Werte {QUOTE_MINIMAL, QUOTE_ALL, QUOTE_NONNUMERIC, QUOTE_NONE} sein."
+    },
+    "ERR_DECIMAL_INVALID": {
+      "EN": "CSV 'decimal' must be '.' or ','.",
+      "DE": "CSV-‚decimal‘ muss '.' oder ',' sein."
+    }
+  }
+}

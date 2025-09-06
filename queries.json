@@ -1,0 +1,4 @@
+{
+  "CUSTOMERS_BY_CITY": "SELECT customer_id, name, city, created_at FROM customers WHERE city = :city ORDER BY created_at DESC LIMIT 5",
+  "ALL_CUSTOMERS": "SELECT customer_id, name, city, created_at FROM customers ORDER BY created_at DESC"
+}

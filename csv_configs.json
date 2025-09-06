@@ -1,0 +1,22 @@
+{
+  "MS_STANDARD": {
+    "delimiter": ";",
+    "quotechar": "\"",
+    "quoting": "QUOTE_MINIMAL",
+    "decimal": ".",
+    "encoding": "utf-8",
+    "header": true,
+    "geometry_format": "WKT",
+    "missing": ""
+  },
+  "NDL_STRICT": {
+    "delimiter": ";",
+    "quotechar": "\"",
+    "quoting": "QUOTE_NONNUMERIC",
+    "decimal": ".",
+    "encoding": "utf-8",
+    "header": true,
+    "geometry_format": "WKT",
+    "missing": ""
+  }
+}
