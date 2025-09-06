@@ -22,9 +22,8 @@ from language_service import (
     add_language_file, # (legacy) not used
     add_single_language_file # not used
 )
-from language_catalog import ROOT_DOMAIN
 
-MESSAGES_PATH = "messages.json"
+MESSAGES_PATH = "config/messages.json"
 
 def show(label: str, lang: str | None = None) -> None:
     try:
@@ -38,12 +37,12 @@ def main() -> None:
         MESSAGES_PATH,
         default_lang="DE",
         allowed_langs={"DE","EN"},
-        context=ROOT_DOMAIN,
+        context="GLOBAL",
         domain_aware=True
     )
 
-    print("=== Context:", ROOT_DOMAIN, "===")
-    set_language_context(ROOT_DOMAIN)
+    print("=== Context: GLOBAL ===")
+    set_language_context("GLOBAL")
     show("USAGE_MESSAGE", "DE")
     show("USAGE_MESSAGE", "EN")
     show("DATA_NOT_FOUND", "DE")
@@ -67,7 +66,7 @@ def main() -> None:
     # List catalogs
     from language_service import get_language
     cat = get_language()
-    print("\nLabels in GLOBAL (direct):", ", ".join(cat.list_labels(domain=ROOT_DOMAIN)))
+    print("\nLabels in GLOBAL (direct):", ", ".join(cat.list_labels(domain="GLOBAL")))
     print("Labels in GLOBAL.DATABASE (recursive):", ", ".join(cat.list_labels(domain="GLOBAL.DATABASE", recursive=True)))
     print("Languages for DATA_NOT_FOUND across domains:", ", ".join(cat.list_languages("DATA_NOT_FOUND")))
     print("Languages in GLOBAL.DATABASE.ORACLE (direct):", ", ".join(cat.list_languages(domain="GLOBAL.DATABASE.ORACLE")))

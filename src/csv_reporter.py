@@ -9,9 +9,13 @@ Generic, reusable CSV reporter that:
 - resolves human-readable messages via the global language_service.
 
 NOTE:
-- Initialize the language service once in your application startup:
+- Initialize the language service once in your application startup (domain-aware):
     from language_service import init_language
-    init_language("messages.json", default_lang="DE", allowed_langs={"DE", "EN"})
+    init_language("config/messages.json",
+                  default_lang="DE",
+                  allowed_langs={"DE", "EN"},
+                  context="GLOBAL.CSV",
+                  domain_aware=True)
 
 - Provide a DB adapter that implements the DBAdapter Protocol below.
 """
@@ -22,7 +26,6 @@ import csv
 import os
 from datetime import datetime, date
 from decimal import Decimal
-from pathlib import Path
 from typing import Protocol, Iterable, Optional, Dict, Any, Tuple
 
 from language_service import get_language

@@ -6,7 +6,7 @@ SQLite DB adapter implementing the DBAdapter Protocol expected by CsvReporter.
 from __future__ import annotations
 
 import sqlite3
-from typing import Optional, Dict, Any, Iterable, Tuple
+from typing import Optional, Dict, Any, Iterable
 
 class SQLiteAdapter:
     def __init__(self, conn: sqlite3.Connection) -> None:
@@ -17,7 +17,7 @@ class SQLiteAdapter:
         sql: str,
         params: Optional[Dict[str, Any]] = None,
         arraysize: int = 10_000,
-    ) -> Tuple[list[str], Iterable[tuple]]:
+    ) -> tuple[list[str], Iterable[tuple]]:
         cur = self.conn.cursor()
         # sqlite3 supports named parameters like :city with dict, pass-through is fine.
         cur.execute(sql, params or {})

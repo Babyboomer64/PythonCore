@@ -24,7 +24,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Dict, Any, Optional, Iterable, Tuple, List
+from typing import Dict, Any, Optional, Iterable, List
 
 
 # --------------------------- Domain utilities ---------------------------------
@@ -196,6 +196,47 @@ class LanguageCatalog:
             return template.format(**kwargs)
         except Exception:
             return template  # do not mask issues—return template as-is
+
+    # -------------------------------- introspection ----------------------------
+    def has_text(
+        self,
+        label: str,
+        lang: Optional[str] = None,
+        *,
+        domain: Optional[str] = None,
+        recursive: bool = True
+    ) -> bool:
+        """
+        Return True if a text exists for the given label under the given domain context.
+
+        :param label: message label to check (non-empty).
+        :param lang: if provided, check for that language only; otherwise check for any language.
+        :param domain: starting domain (defaults to current context domain).
+        :param recursive: if True, walk the domain chain (e.g., GLOBAL.DATABASE.ORACLE -> ... -> GLOBAL);
+                          if False, only check the exact domain.
+        """
+        if not label or not isinstance(label, str):
+            return False
+
+        dom = _normalize_domain(domain or self._context_domain)
+        domains = _domain_chain(dom) if recursive else [dom]
+        code = self._normalize_lang(lang) if lang else None
+
+        for d in domains:
+            labels = self._data.get(d)
+            if not labels:
+                continue
+            lang_map = labels.get(label)
+            if not lang_map:
+                continue
+            if code:
+                if code in lang_map:
+                    return True
+            else:
+                # any language present for this label in this domain
+                if bool(lang_map):
+                    return True
+        return False
 
     # -------------------------------- catalogs --------------------------------
     def list_labels(self, *, domain: Optional[str] = None, recursive: bool = False) -> list[str]:

@@ -47,6 +47,10 @@ class CsvReporterConfig:
         """Return a sorted list of all query labels."""
         return sorted(self._queries.keys())
 
+    def has_query(self, label: str) -> bool:
+        """Return True if a query with this label exists."""
+        return label in self._queries
+
     # ---------------- CSV CONFIGS: setter / getter / catalog -------------------
     def set_csv_config(self, label: str, cfg: Dict[str, Any], *, overwrite: bool = True) -> None:
         """Add or replace a CSV config under a label (with validation/normalization)."""
@@ -68,6 +72,10 @@ class CsvReporterConfig:
     def list_csv_config_labels(self) -> list[str]:
         """Return a sorted list of all CSV config labels."""
         return sorted(self._csv_configs.keys())
+
+    def has_csv_config(self, label: str) -> bool:
+        """Return True if a CSV config with this label exists."""
+        return label in self._csv_configs
 
     # -------------------------- Load from JSON files ---------------------------
     def load_queries_from_file(self, file_path: str | Path, *, overwrite: bool = True) -> int:

@@ -18,5 +18,25 @@
     "header": true,
     "geometry_format": "WKT",
     "missing": ""
+  },
+  "EXCEL_COMPAT": {
+    "delimiter": ",",
+    "quotechar": "\"",
+    "quoting": "QUOTE_ALL",
+    "decimal": ".",
+    "encoding": "utf-8-sig",
+    "header": true,
+    "geometry_format": "WKT",
+    "missing": ""
+  },
+  "DEBUG_QUOTE_ALL": {
+    "delimiter": ";",
+    "quotechar": "\"",
+    "quoting": "QUOTE_ALL",
+    "decimal": ".",
+    "encoding": "utf-8",
+    "header": true,
+    "geometry_format": "WKT",
+    "missing": "NA"
   }
 }

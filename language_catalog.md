@@ -151,3 +151,66 @@ Acceptance Criteria
 
 ---
 
+# Architecture Overview
+
+## Core Modules (`src/`)
+- `csv_reporter.py` – main reporting engine (generic)
+- `csv_reporter_config.py` – loads/manages queries + csv configs
+- `language_catalog.py` / `language_service.py` – domain-aware language/text handling
+- `sqlite_adapter.py` – DB adapter for SQLite (Oracle adapter planned)
+
+## Configuration (`config/`)
+- `queries.json` – SQL statements per label
+- `csv_configs.json` – CSV formatting rules
+- `messages.json` – language messages with domain/context
+
+## REST API (`server/app/`)
+- `main.py` – FastAPI entrypoint
+- `settings.py` – environment-driven configuration
+- `lifecycle.py` – startup/shutdown hooks (load language, configs, DB)
+- `deps.py` – shared dependencies for routers
+- `routers/` – endpoints (health, config, csv, admin)
+- `services/` – thin service layer (CsvService etc.)
+
+## Examples (`examples/`)
+- Scripts to init SQLite DB and run local reporter tests.
+
+## Tests (`tests/`)
+- Smoke + integration tests (pytest).
+
+# Tweight API – Service Guide
+
+## Starting the Service
+```bash
+source activate_dev.sh
+export ADMIN_TOKEN="supersecret123"
+uvicorn app.main:app --app-dir server --reload
+```
+
+## Endpoints
+
+### Health
+- `GET /health/live` – liveness
+- `GET /health/ready` – readiness
+
+### Config
+- `GET /config/queries` – list query labels
+- `GET /config/csv-configs` – list csv config labels
+
+### CSV
+- `POST /csv/export` – run a CSV export  
+  Body example:
+  ```json
+  {
+    "select_label": "ALL_CUSTOMERS",
+    "csv_config_label": "NDL_STRICT",
+    "out_path": "out.csv"
+  }
+  ```
+
+### Admin
+- `POST /admin/shutdown` – graceful shutdown (requires `X-Admin-Token` header)
+
+## Documentation
+- Swagger UI: http://127.0.0.1:8000/docs
+- OpenAPI JSON: http://127.0.0.1:8000/openapi.json

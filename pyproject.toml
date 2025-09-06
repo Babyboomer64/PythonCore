@@ -1,0 +1,21 @@
+[project]
+name = "pythoncore"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+  "oracledb>=2.0",   # Oracle client
+  "pytest",
+  "ruff",
+]
+
+[tool.ruff]
+line-length = 100
+exclude = ["__pycache__", "build", "dist", ".venv"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.13"
+ignore_missing_imports = true

@@ -29,9 +29,9 @@ from csv_reporter import CsvReporter
 from sqlite_adapter import SQLiteAdapter
 
 DB_PATH = "test.db"
-MESSAGES_PATH = "messages.json"
-QUERIES_PATH = "queries.json"
-CSV_CONFIGS_PATH = "csv_configs.json"
+MESSAGES_PATH = "config/messages.json"
+QUERIES_PATH = "config/queries.json"
+CSV_CONFIGS_PATH = "config/csv_configs.json"
 
 def parse_kv_args(args: list[str]) -> Dict[str, str]:
     """Parse key=value pairs from CLI tail into a dict."""
